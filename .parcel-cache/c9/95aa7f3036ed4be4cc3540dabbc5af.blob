@@ -1,0 +1,193 @@
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "RelatedItem", function () {
+  return RelatedItem;
+});
+var _preact = require('preact');
+var _jsxFileName = "/project/sandbox/RelatedItem.tsx";
+function RelatedItem({item, insights, onSelect}) {
+  return _preact.h("a", {
+    className: "RelatedItem grid gap-2 color-inherit no-underline",
+    href: item.url,
+    onClick: event => {
+      event.preventDefault();
+      // eslint-disable-next-line no-console
+      console.log(item.objectID);
+      onSelect(item);
+      insights('clickedObjectIDs', {
+        objectIDs: [item.objectID],
+        positions: [item.__position],
+        eventName: 'Product Clicked',
+        queryID: item.__queryID,
+        index: item.__indexName
+      });
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 5
+    }
+  }, _preact.h("div", {
+    className: "relative",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28,
+      columnNumber: 7
+    }
+  }, _preact.h("img", {
+    src: item.image_urls[0],
+    alt: item.name,
+    className: "max-w-full",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29,
+      columnNumber: 9
+    }
+  }), _preact.h("div", {
+    className: "RelatedItem-info",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 9
+    }
+  }, item._score && _preact.h("div", {
+    className: "flex items-center absolute right-0 top-0 text-gray-500 font-semibold text-xs rounded-lg m-2 py-1 px-2",
+    style: {
+      background: 'rgb(255 255 255 / 92%)'
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33,
+      columnNumber: 13
+    }
+  }, _preact.h("svg", {
+    className: "inline-block mr-1",
+    width: "18",
+    viewBox: "0 0 24 24",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37,
+      columnNumber: 15
+    }
+  }, _preact.h("path", {
+    fill: "currentColor",
+    d: "M18.984 9.984h2.016v4.031h-2.016v-4.031zM15 18v-12h2.016v12h-2.016zM3 14.016v-4.031h2.016v4.031h-2.016zM11.016 21.984v-19.969h1.969v19.969h-1.969zM6.984 18v-12h2.016v12h-2.016z",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38,
+      columnNumber: 17
+    }
+  })), item._score), _preact.h("div", {
+    className: "flex items-center absolute right-0 bottom-0 text-gray-500 font-semibold text-xs rounded-lg m-2 py-1 px-2",
+    style: {
+      background: 'rgb(255 255 255 / 92%)'
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46,
+      columnNumber: 11
+    }
+  }, item.objectID))), _preact.h("div", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 55,
+      columnNumber: 7
+    }
+  }, _preact.h("div", {
+    className: "text-sm text-gray-500",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 56,
+      columnNumber: 9
+    }
+  }, item.brand), _preact.h("div", {
+    className: "text-gray-900 font-semibold mb-1 whitespace-normal",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58,
+      columnNumber: 9
+    }
+  }, item.name), Boolean(item.reviewScore) && _preact.h("div", {
+    className: "items-center flex flex-grow text-sm text-gray-700",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 63,
+      columnNumber: 11
+    }
+  }, _preact.h("svg", {
+    className: "mr-1 text-orange-400",
+    width: "16",
+    height: "16",
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 64,
+      columnNumber: 13
+    }
+  }, _preact.h("polygon", {
+    points: "12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 73,
+      columnNumber: 15
+    }
+  })), _preact.h("span", {
+    className: "mr-1",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 75,
+      columnNumber: 13
+    }
+  }, item.reviewScore.toFixed(1) || '--'), _preact.h("span", {
+    className: "text-gray-400",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 76,
+      columnNumber: 13
+    }
+  }, "(", item.reviewCount, " reviews)")), _preact.h("div", {
+    className: "my-2 font-semibold text-gray-800",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 80,
+      columnNumber: 9
+    }
+  }, item.price.value, " ", item.price.currency), _preact.h("button", {
+    className: "flex items-center justify-center w-full bg-white border-nebula-500 border-solid border rounded text-nebula-900 cursor-pointer py-1 px-2 font-semibold",
+    onClick: event => {
+      event.preventDefault();
+      insights('convertedObjectIDsAfterSearch', {
+        objectIDs: [item.objectID],
+        eventName: 'Product Added To Cart',
+        queryID: item.__queryID,
+        index: item.__indexName
+      });
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 84,
+      columnNumber: 9
+    }
+  }, "Add to cart")));
+}

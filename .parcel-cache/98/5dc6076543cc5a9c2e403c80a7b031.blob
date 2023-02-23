@@ -1,0 +1,27 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="8dfa46ee3d043de4ae2b8aacff8040ef" type="image/x-icon">
+    <link href="3a423c742837277937307756b9c42711" rel="stylesheet">
+    <link rel="stylesheet" href="a87ff3d0d0f1e5fb0a669ea5956d2437">
+    <link rel="stylesheet" href="d056e392e228f2797e8ecffd91632e34">
+
+    <title>Algolia JavaScript Recommend</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Algolia Recommend</h1>
+
+      <div id="autocomplete"></div>
+
+      <div id="referenceHit"></div>
+      <div id="frequentlyBoughtTogether"></div>
+      <div id="relatedProducts"></div>
+    </div>
+
+    <script src="4163e8bfa1dd86d1a024cfad1e5bbbeb"></script>
+  </body>
+</html>

@@ -1,0 +1,353 @@
+var _algoliaAutocompleteJs = require('@algolia/autocomplete-js');
+var _algoliaRecommend = require('@algolia/recommend');
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+var _algoliaRecommendDefault = _parcelHelpers.interopDefault(_algoliaRecommend);
+var _algoliaRecommendJs = require('@algolia/recommend-js');
+var _algoliaUiComponentsHorizontalSliderJs = require('@algolia/ui-components-horizontal-slider-js');
+var _algoliasearch = require('algoliasearch');
+var _algoliasearchDefault = _parcelHelpers.interopDefault(_algoliasearch);
+var _preact = require('preact');
+var _searchInsights = require('search-insights');
+var _searchInsightsDefault = _parcelHelpers.interopDefault(_searchInsights);
+var _RelatedItem = require('./RelatedItem');
+require('@algolia/autocomplete-theme-classic');
+require('@algolia/ui-components-horizontal-slider-theme');
+var _jsxFileName = "/project/sandbox/app.tsx";
+const appId = 'XX85YRZZMV';
+const apiKey = '098f71f9e2267178bdfc08cc986d2999';
+const indexName = 'test_FLAGSHIP_ECOM_recommend';
+const searchClient = _algoliasearchDefault.default(appId, apiKey);
+const recommendClient = _algoliaRecommendDefault.default(appId, apiKey);
+_searchInsightsDefault.default('init', {
+  appId,
+  apiKey
+});
+_searchInsightsDefault.default('setUserToken', 'user-token-1');
+function updateReferenceItem(item) {
+  _preact.render(_preact.h(ReferenceItem, {
+    item: item,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 5
+    }
+  }), document.querySelector('#referenceHit'));
+  renderRecommendations(item);
+}
+_algoliaAutocompleteJs.autocomplete({
+  container: '#autocomplete',
+  placeholder: 'Search for a product',
+  openOnFocus: true,
+  defaultActiveItemId: 0,
+  getSources({query}) {
+    return [{
+      sourceId: 'suggestions',
+      getItems() {
+        return _algoliaAutocompleteJs.getAlgoliaResults({
+          searchClient,
+          queries: [{
+            indexName,
+            query,
+            params: {
+              hitsPerPage: 5
+            }
+          }]
+        });
+      },
+      getItemInputValue({item}) {
+        return item.name;
+      },
+      onSelect({item}) {
+        updateReferenceItem(item);
+      },
+      templates: {
+        item({item, components}) {
+          return _preact.h("div", {
+            className: "aa-ItemWrapper",
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 69,
+              columnNumber: 15
+            }
+          }, _preact.h("div", {
+            className: "aa-ItemContent",
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 70,
+              columnNumber: 17
+            }
+          }, _preact.h("div", {
+            className: "aa-ItemIcon aa-ItemIcon--picture aa-ItemIcon--alignTop",
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 71,
+              columnNumber: 19
+            }
+          }, _preact.h("img", {
+            src: item.image_urls[0],
+            alt: item.name,
+            width: "40",
+            height: "40",
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 72,
+              columnNumber: 21
+            }
+          })), _preact.h("div", {
+            className: "aa-ItemContentBody",
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 80,
+              columnNumber: 19
+            }
+          }, _preact.h("div", {
+            className: "aa-ItemContentTitle",
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 81,
+              columnNumber: 21
+            }
+          }, _preact.h(components.Highlight, {
+            hit: item,
+            attribute: "name",
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 82,
+              columnNumber: 23
+            }
+          })), _preact.h("div", {
+            className: "aa-ItemContentDescription",
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 84,
+              columnNumber: 21
+            }
+          }, "In ", _preact.h("strong", {
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 85,
+              columnNumber: 26
+            }
+          }, item.brand)))));
+        }
+      }
+    }];
+  }
+});
+function ReferenceItem({item}) {
+  return _preact.h("div", {
+    className: "my-2",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 100,
+      columnNumber: 5
+    }
+  }, _preact.h("div", {
+    className: "grid gap-4",
+    style: {
+      gridTemplateColumns: '150px 1fr'
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 101,
+      columnNumber: 7
+    }
+  }, _preact.h("div", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 107,
+      columnNumber: 9
+    }
+  }, _preact.h("img", {
+    src: item.image_urls[0],
+    alt: item.name,
+    className: "max-w-full",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 108,
+      columnNumber: 11
+    }
+  })), _preact.h("div", {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 115,
+      columnNumber: 9
+    }
+  }, _preact.h("div", {
+    className: "text-sm text-gray-500",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 116,
+      columnNumber: 11
+    }
+  }, item.brand), _preact.h("div", {
+    className: "text-gray-900 font-semibold mb-1 whitespace-normal",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 118,
+      columnNumber: 11
+    }
+  }, item.name), Boolean(item.reviewScore) && _preact.h("div", {
+    className: "items-center flex flex-grow text-sm text-gray-700",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 123,
+      columnNumber: 13
+    }
+  }, _preact.h("svg", {
+    className: "mr-1 text-orange-400",
+    width: "16",
+    height: "16",
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 124,
+      columnNumber: 15
+    }
+  }, _preact.h("polygon", {
+    points: "12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 133,
+      columnNumber: 17
+    }
+  })), _preact.h("span", {
+    className: "mr-1",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 135,
+      columnNumber: 15
+    }
+  }, item.reviewScore.toFixed(1) || '--'), _preact.h("span", {
+    className: "text-gray-400",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 138,
+      columnNumber: 15
+    }
+  }, "(", item.reviewCount, " reviews)")), _preact.h("div", {
+    className: "my-2 font-semibold text-gray-800",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 144,
+      columnNumber: 11
+    }
+  }, "$", item.price))));
+}
+function renderRecommendations(selectedProduct) {
+  _algoliaRecommendJs.frequentlyBoughtTogether({
+    container: '#frequentlyBoughtTogether',
+    recommendClient,
+    indexName,
+    objectIDs: [selectedProduct.objectID],
+    itemComponent({item}) {
+      return _preact.h(_RelatedItem.RelatedItem, {
+        item: item,
+        insights: _searchInsightsDefault.default,
+        onSelect: updateReferenceItem,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 159,
+          columnNumber: 9
+        }
+      });
+    },
+    maxRecommendations: 3,
+    queryParameters: {
+      analytics: true,
+      clickAnalytics: true
+    },
+    fallbackComponent() {
+      return _algoliaRecommendJs.relatedProducts({
+        recommendClient,
+        indexName,
+        objectIDs: [selectedProduct.objectID],
+        itemComponent({item}) {
+          return _preact.h(_RelatedItem.RelatedItem, {
+            item: item,
+            insights: _searchInsightsDefault.default,
+            onSelect: updateReferenceItem,
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 178,
+              columnNumber: 13
+            }
+          });
+        },
+        view: _algoliaUiComponentsHorizontalSliderJs.horizontalSlider,
+        maxRecommendations: 10,
+        translations: {
+          title: 'Related products (fallback)'
+        },
+        fallbackParameters: {
+          facetFilters: [`hierarchical_categories.lvl2:${selectedProduct.hierarchical_categories.lvl2}`]
+        },
+        queryParameters: {
+          analytics: true,
+          clickAnalytics: true,
+          facetFilters: [`hierarchical_categories.lvl0:${selectedProduct.hierarchical_categories.lvl0}`]
+        }
+      });
+    }
+  });
+  _algoliaRecommendJs.relatedProducts({
+    container: '#relatedProducts',
+    recommendClient,
+    indexName,
+    objectIDs: [selectedProduct.objectID],
+    itemComponent({item}) {
+      return _preact.h(_RelatedItem.RelatedItem, {
+        item: item,
+        insights: _searchInsightsDefault.default,
+        onSelect: updateReferenceItem,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 213,
+          columnNumber: 9
+        }
+      });
+    },
+    view: _algoliaUiComponentsHorizontalSliderJs.horizontalSlider,
+    maxRecommendations: 10,
+    translations: {
+      title: 'Related products'
+    },
+    fallbackParameters: {
+      facetFilters: [`hierarchical_categories.lvl2:${selectedProduct.hierarchical_categories.lvl2}`]
+    },
+    queryParameters: {
+      analytics: true,
+      clickAnalytics: true,
+      facetFilters: [`hierarchical_categories.lvl0:${selectedProduct.hierarchical_categories.lvl0}`]
+    }
+  });
+}

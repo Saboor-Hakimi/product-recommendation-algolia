@@ -1,0 +1,11 @@
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "getHTMLElement", function () {
+  return getHTMLElement;
+});
+function getHTMLElement(value, environment) {
+  if (typeof value === 'string') {
+    return environment.document.querySelector(value);
+  }
+  return value;
+}

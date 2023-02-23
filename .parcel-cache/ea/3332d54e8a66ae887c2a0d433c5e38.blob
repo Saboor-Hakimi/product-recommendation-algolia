@@ -1,0 +1,27 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="/favicon.HASH_REF_78e76f790c1cb3ff938ef11c481dfaa8.png" type="image/x-icon">
+    <link href="https://unpkg.com/tailwindcss@2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/index.HASH_REF_b88f1856e4ad9d0359021d45639fed86.css">
+    <link rel="stylesheet" href="/index.HASH_REF_a4f0f4ee3af0d52a9becb54d1e380e66.css">
+
+    <title>Algolia JavaScript Recommend</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Algolia Recommend</h1>
+
+      <div id="autocomplete"></div>
+
+      <div id="referenceHit"></div>
+      <div id="frequentlyBoughtTogether"></div>
+      <div id="relatedProducts"></div>
+    </div>
+
+    <script src="/index.HASH_REF_b5ec41889fd9c8ba20f8d3037d93137f.js"></script>
+  </body>
+</html>

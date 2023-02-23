@@ -1,0 +1,53 @@
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "horizontalSlider", function () {
+  return horizontalSlider;
+});
+var _babelRuntimeHelpersObjectWithoutProperties = require("@babel/runtime/helpers/objectWithoutProperties");
+var _babelRuntimeHelpersObjectWithoutPropertiesDefault = _parcelHelpers.interopDefault(_babelRuntimeHelpersObjectWithoutProperties);
+var _babelRuntimeHelpersExtends = require("@babel/runtime/helpers/extends");
+var _babelRuntimeHelpersExtendsDefault = _parcelHelpers.interopDefault(_babelRuntimeHelpersExtends);
+var _algoliaUiComponentsHorizontalSliderVdom = require('@algolia/ui-components-horizontal-slider-vdom');
+var _preact = require('preact');
+var _preactHooks = require('preact/hooks');
+var _getHTMLElement = require('./getHTMLElement');
+var _excluded = ["container", "environment"];
+var UncontrolledHorizontalSlider = _algoliaUiComponentsHorizontalSliderVdom.createHorizontalSliderComponent({
+  createElement: _preact.createElement,
+  Fragment: _preact.Fragment
+});
+function HorizontalSlider(props) {
+  var listRef = _preactHooks.useRef(null);
+  var nextButtonRef = _preactHooks.useRef(null);
+  var previousButtonRef = _preactHooks.useRef(null);
+  var sliderIdRef = _preactHooks.useRef(_algoliaUiComponentsHorizontalSliderVdom.generateHorizontalSliderId());
+  _preactHooks.useEffect(function () {
+    _algoliaUiComponentsHorizontalSliderVdom.updateNavigationButtonsProps({
+      listRef: listRef,
+      nextButtonRef: nextButtonRef,
+      previousButtonRef: previousButtonRef
+    });
+  });
+  return _preact.h(UncontrolledHorizontalSlider, _babelRuntimeHelpersExtendsDefault.default({}, props, {
+    listRef: listRef,
+    nextButtonRef: nextButtonRef,
+    previousButtonRef: previousButtonRef,
+    sliderIdRef: sliderIdRef,
+    updateNavigationButtonsProps: function updateNavigationButtonsProps() {
+      return _algoliaUiComponentsHorizontalSliderVdom.updateNavigationButtonsProps({
+        listRef: listRef,
+        nextButtonRef: nextButtonRef,
+        previousButtonRef: previousButtonRef
+      });
+    }
+  }));
+}
+function horizontalSlider(_ref) {
+  var container = _ref.container, _ref$environment = _ref.environment, environment = _ref$environment === void 0 ? window : _ref$environment, props = _babelRuntimeHelpersObjectWithoutPropertiesDefault.default(_ref, _excluded);
+  var children = _preact.h(HorizontalSlider, props);
+  if (!container) {
+    return children;
+  }
+  _preact.render(children, _getHTMLElement.getHTMLElement(container, environment));
+  return undefined;
+}
